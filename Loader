@@ -1,0 +1,15 @@
+-- RatHub game-specific loader
+local GAME_MAP = {
+    [79050764911955] = "MTI",  -- your first game
+    [10523498173]    = "TUI",  -- your second game
+}
+
+local GAME_ID = game.PlaceId
+local PATH    = GAME_MAP[GAME_ID]
+
+if PATH then
+    local URL = ("https://raw.githubusercontent.com/TonfulJoy/RatHub/refs/heads/main/%s"):format(PATH)
+    loadstring(game:HttpGet(URL))()
+else
+    warn("Unsupported game (ID: " .. GAME_ID .. ")")
+end
